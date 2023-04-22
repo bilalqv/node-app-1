@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
-const dbConfig = require('../config/db.config');
+const config = require('../config/credentials.json');
 
 const sequelize = new Sequelize(
-  dbConfig.DB_NAME,
-  dbConfig.DB_USERNAME,
-  dbConfig.DB_PASSWORD,
+  config.DB_NAME,
+  config.DB_USERNAME,
+  config.DB_PASSWORD,
   {
-    host: dbConfig.DB_HOST,
-    dialect: dbConfig.DB_DIALECT,
+    host: config.DB_HOST,
+    dialect: config.DB_DIALECT,
   }
 );
 
