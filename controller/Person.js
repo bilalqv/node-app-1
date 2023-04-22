@@ -11,6 +11,7 @@ const createTable = async (req, res) => {
       data: "DB Synced Successfully",
     });
   } catch (err) {
+    console.log(`Error in creating Syncing. Error: ${err}`);
     res.send({
       success: 0,
       message: `Error: ${err}`,
@@ -20,18 +21,14 @@ const createTable = async (req, res) => {
 
 const allData = async (req, res) => {
   try {
-    // const data = await PersonTable.findAll({
-    //   where: {
-    //     id: {
-    //       [Op.gte]: 2,
-    //     },
-    //   },
-    //   raw: true,
-    // });
-    const data = {
-      name: "balkn",
-      age: 32
-    }
+    const data = await PersonTable.findAll({
+      where: {
+        id: {
+          [Op.gte]: 2,
+        },
+      },
+      raw: true,
+    });
     return res.json(data);
   } catch (err) {
     console.log(`Error: ${err}`);
@@ -45,16 +42,12 @@ const allData = async (req, res) => {
 const createRow = async (req, res) => {
   try {
     console.log('createRow called.');
-    // const ress = await PersonTable.create({
-    //   name: req.body.name,
-    //   age: req.body.age,
-    //   gender: req.body.gender,
-    //   amount: req.body.amount,
-    // });
-    const ress = {
-      name: "fasdf",
-      age: 32
-    }
+    const ress = await PersonTable.create({
+      name: req.body.name,
+      age: req.body.age,
+      gender: req.body.gender,
+      amount: req.body.amount,
+    });
     return res.send({
       success: 1,
       data: ress,
@@ -70,16 +63,12 @@ const createRow = async (req, res) => {
 
 const getSingle = async (req, res) => {
   try{
-    // const data = await PersonTable.findOne({
-    //   where: {
-    //     id: 2
-    //   },
-    //   raw: true
-    // });
-    const data = {
-      name: "frtr",
-      age: 43
-    }
+    const data = await PersonTable.findOne({
+      where: {
+        id: 2
+      },
+      raw: true
+    });
     console.log('Data Send Successfully.');
     res.json({
       success: 1,
