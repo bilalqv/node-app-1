@@ -9,12 +9,12 @@ const {
 const setup = async () => {
   try {
     const res = await getSecrets();
-    fs.mkdir(path.join(__dirname, "../configg"), (err) => {
+    fs.mkdir(path.join(__dirname, "../config"), (err) => {
       if (err) {
         return console.error(err);
       }
 
-      fs.writeFileSync(path.join(__dirname, "../configg/a.json"), res, (err) => {
+      fs.writeFileSync(path.join(__dirname, "../config/credentials.json"), res, (err) => {
         if (err) {
           return console.log(`Error in  writeFileSync. Error: s${err}`);
         }
@@ -25,7 +25,6 @@ const setup = async () => {
         }
       });
     });
-    const file = await fs.writeFile("../configg/credebtials.json");
   } catch (err) {
     console.log(`Error: ${err}`);
   }
