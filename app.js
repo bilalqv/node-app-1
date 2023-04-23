@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const loader = require('./loader');
 const sequelize = require('./Util/db');
 const personRoutes = require('./routes/Person');
 var cors = require('cors')
@@ -26,4 +27,4 @@ const PORT = process.env.PORT || 3232;
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}.`)
-})
+});
